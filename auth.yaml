@@ -1,0 +1,22 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: whoiam-auth
+spec:
+  basicAuth:
+    secret: whoiam-authsecret
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: whoiam-authsecret
+  namespace: default
+data:
+  users: |2
+    YWRtaW46JGFwcjEkL2d1aXprZkEkLnlELjlnLnhTYjR0OVQ3MHA3dGE0LwoKdXNl
+    cjokYXByMSRHSC9GdTVuaSRXS3Nyb3ZSSVFSSUxIN0h5VFd2ZlUwCgo=
+# generate a password file
+# htpasswd -nb admin adminadmin >> app-passwd.txt
+# convert to base64 and copy to clipboard and place it above
+# cat app-passwd.txt | openssl base64 | pbcopy

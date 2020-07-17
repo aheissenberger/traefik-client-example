@@ -1,0 +1,4 @@
+resources:
+  - ./auth.yaml
+  - ./whoiam.yaml
+  #- ./admin-auth.yaml
